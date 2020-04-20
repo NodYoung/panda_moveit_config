@@ -1,11 +1,13 @@
 <launch>
 
   <arg name="load_gripper" default="true" />
+  <arg name="load_robot_description" default="false"/>
 
   <include file="$(find panda_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="$(arg load_robot_description)" />
     <arg name="load_gripper" value="$(arg load_gripper)" />
   </include>
-
+  
   <arg name="planner" default="ompl" />
 
   <!-- GDB Debug Option -->
@@ -77,5 +79,8 @@
 
     <remap from="/joint_states" to="/joint_states_desired" />
   </node>
+
+
+  
 
 </launch>
